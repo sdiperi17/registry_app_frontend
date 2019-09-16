@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { apiUrl } from "../config";
 
 class Header extends Component {
     componentDidMount() {
@@ -30,21 +31,21 @@ class Header extends Component {
                                 <p>My Registry</p>
                             </Link>
                             <h2>Hello {this.props.user.first_name} </h2>
-                            <a href="/auth/logout">
+                            <a href={`${apiUrl}/auth/logout`}>
                                 <button>Log out</button>
                             </a>
                         </div>
                     ) : (
-                        <Link to="/signup">
-                            <div className="sign-in">
-                                <div className="user-icon">
-                                    <i className="far fa-user-circle" />
-                                    <i className="fas fa-angle-down" />
+                            <Link to="/signup">
+                                <div className="sign-in">
+                                    <div className="user-icon">
+                                        <i className="far fa-user-circle" />
+                                        <i className="fas fa-angle-down" />
+                                    </div>
+                                    <span>sign in / sign up</span>
                                 </div>
-                                <span>sign in / sign up</span>
-                            </div>
-                        </Link>
-                    )}
+                            </Link>
+                        )}
                 </div>
             </header>
         );

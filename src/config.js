@@ -1,1 +1,1 @@
-export const apiUrl = process.env.NODE_ENV === 'production' ? 'https://registry-app-backend.herokuapp.com' : '';
+export const apiUrl = 'https://registry-app-backend.herokuapp.com';
