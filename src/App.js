@@ -11,8 +11,9 @@ import Cookies from "universal-cookie";
 import axios from "axios";
 import Dashboard from "./components/Dashboard";
 import RegistrySearchResult from "./components/RegistrySearchResult";
-const cookies = new Cookies();
 import { apiUrl } from './config'
+const cookies = new Cookies();
+
 
 class App extends Component {
     state = {
