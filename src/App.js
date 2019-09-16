@@ -30,7 +30,7 @@ class App extends Component {
     };
 
     componentDidMount = async () => {
-        let user = await axios("/auth/current_user");
+        let user = await axios(`${apiUrl}/auth/current_user`);
         this.setState({
             user: user.data,
             registryType: cookies.get("registryType"),
