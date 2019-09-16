@@ -37,14 +37,14 @@ class CreateRegistry extends Component {
             date: this.state.date,
             host_1: `${this.state.host1_firstname} ${
                 this.state.host1_lastname
-            }`,
+                }`,
             host_2: `${this.state.host2_firstname} ${
                 this.state.host2_lastname
-            }`,
+                }`,
             user_id: this.props.user.user_id
         };
 
-        let registry = await axios.post("/api/event", newRegistry);
+        let registry = await axios.post(`${apiUrl}/api/event`, newRegistry);
         let eventId = registry.data;
 
         this.setState({
@@ -56,7 +56,7 @@ class CreateRegistry extends Component {
         this.props.getEventId(eventId);
     };
 
-    validateForm = () => {};
+    validateForm = () => { };
 
     render() {
         if (this.state.created === true) {

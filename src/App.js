@@ -12,6 +12,7 @@ import axios from "axios";
 import Dashboard from "./components/Dashboard";
 import RegistrySearchResult from "./components/RegistrySearchResult";
 const cookies = new Cookies();
+import { apiUrl } from './config'
 
 class App extends Component {
     state = {
@@ -40,14 +41,14 @@ class App extends Component {
     };
 
     fetchEvent = async () => {
-        let events = await axios(`/api/event/${this.state.user.user_id}`);
+        let events = await axios(`${apiUrl}/api/event/${this.state.user.user_id}`);
         this.setState({
             events: events.data
         });
     };
 
     getProductData = async () => {
-        let products = await axios("/api/products");
+        let products = await axios(`${apiUrl}/api/products`);
         this.setState({
             products: products.data
         });
@@ -91,7 +92,7 @@ class App extends Component {
             product_id: obj.product_id
         };
 
-        let registryItems = await axios.post("/api/presents", newItem);
+        let registryItems = await axios.post(`${apiUrl}/api/presents`, newItem);
         console.log(registryItems.data);
 
         if (registryItems.data.length > 0) {
@@ -117,7 +118,7 @@ class App extends Component {
     handleRemoveItems = async obj => {
         console.log(obj);
         let updatedRegistryItem = await axios.delete(
-            `/api/presents/${obj.present_id}`
+            `${apiUrl}/api/presents/${obj.present_id}`
         );
         console.log(obj);
         this.setState(prev => {
@@ -130,7 +131,7 @@ class App extends Component {
     };
 
     fetchRegistryItem = async () => {
-        let registryItems = await axios(`/api/presents/${this.state.eventId}`);
+        let registryItems = await axios(`${apiUrl}/api/presents/${this.state.eventId}`);
         if (registryItems.data.length > 0) {
             let addedItems = registryItems.data.map(item => {
                 // console.log(item["product.img"]);
@@ -213,8 +214,8 @@ class App extends Component {
                                     fetchRegistryItem={this.fetchRegistryItem}
                                 />
                             ) : (
-                                "Loading..."
-                            );
+                                    "Loading..."
+                                );
                         }}
                     />
                     <Route
@@ -235,8 +236,8 @@ class App extends Component {
                                     fetchRegistryItem={this.fetchRegistryItem}
                                 />
                             ) : (
-                                "Loading..."
-                            );
+                                    "Loading..."
+                                );
                         }}
                     />
                     <Route
@@ -265,8 +266,8 @@ class App extends Component {
                                     registryType={registryType}
                                 />
                             ) : (
-                                "Loading..."
-                            );
+                                    "Loading..."
+                                );
                         }}
                     />
                     s
