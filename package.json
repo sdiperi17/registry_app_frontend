@@ -18,18 +18,11 @@
         "validator": "^10.11.0"
     },
     "scripts": {
+        "start": "react-scripts start",
         "build": "react-scripts build",
-        "test": "react-scripts test",
+        "test": "react-scripts test --env=jsdom",
         "eject": "react-scripts eject",
-        "db:init": "dropdb --if-exists registry_db && createdb registry_db",
-        "db:reset": "node scripts/resetDb.js",
-        "db:model": "node models/models.js",
-        "db:seed": "node scripts/seed.js",
-        "server": "nodemon server.js",
-        "dev": "concurrently \"npm run server\" \"react-scripts start\"",
-        "start2": "concurrently \"node server.js\" \"react-scripts start\"",
-        "start": "node server.js",
-        "heroku-postbuild": "npm run build"
+        "postinstall": "react-scripts build"
     },
     "eslintConfig": {
         "extends": "react-app"
