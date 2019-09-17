@@ -31,13 +31,14 @@ class App extends Component {
 
     componentDidMount = async () => {
         let user = await axios(`${apiUrl}/auth/current_user`);
-        this.setState({
-            user: user.data,
-            registryType: cookies.get("registryType"),
-            eventId: cookies.get("event_id")
-        });
-        this.getProductData();
-        this.fetchEvent();
+        console.log(user);
+        // this.setState({
+        //     user: user.data,
+        //     registryType: cookies.get("registryType"),
+        //     eventId: cookies.get("event_id")
+        // });
+        // this.getProductData();
+        // this.fetchEvent();
         // this.fetchRegistryItem();
     };
 
